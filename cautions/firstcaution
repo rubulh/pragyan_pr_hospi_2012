@@ -1,0 +1,28 @@
+>>>>>1324281834
+i could not get the preg replace working in the allglobals file ie /var/www/html/pragyan/files/allglobals.php and have hardcoded the $MAINTABLE  for now fix it later so as to make it compatible with all servers
+
+>>1324283323
+the css pages needed the urls of the various images but i wanted to make all urls independent of hardcoding but the css pages dont interpret the php code so i could not make the css work in my way so what i did is that i commented the css link line in the mainfile and pasted all the css file contents between <style> and </style>
+try to figure out a better way of dong that 
+
+>>in the gethostels.php file i have not yet included the file which provides the mysql connection
+the file name and its function is to be decided and included 
+
+>>in the gethostels and the getrooms file for now i have commented the database retrival part and have hard coded the hostel array ;this needs to be changed later
+
+>>some variables need to be there in the mysql file
+like
+$ACCOMODATIONMYSQLTABLE
+and that table need to have the following fields
+STAYING
+HOSTELNAMES
+EMAIL
+NAME
+CELL
+ROOM
+COLLEGE
+CHECKIN
+CHECKOUT
+
+
+>>in the getrooms file i have to add orderby rooms ascending but i have not as i am not sure of the syntax also i have used distinct in two places getrooms and gethostels but the syntax is not verified

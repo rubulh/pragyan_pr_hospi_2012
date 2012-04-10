@@ -1,0 +1,37 @@
+<?php
+require_once("allglobals.php");
+require_once("setup/SET_checklogin.php");
+require_once("setup/SET_login.php");
+ require_once("setup/SET_mysqlconnection.php");
+if($_SERVER['HTTP_REFERER']!="$FILESDIR"."/login.php")
+  {
+    header("Location:$ERRORREDIRECTION");
+    exit(1);
+  }
+else if(!((isset($_POST['emailidpost'])) && (isset($_POST['pass'])) && (isset($_POST['submitted']))))
+  {
+    $backdirection=$FILESDIR."/login.php";
+    header("Location:$backdirection");
+    exit(1);
+  }
+else
+  {
+    $thefinal=false;
+    $emailid=$_POST['emailidpost'];
+    $password=$_POST['pass'];
+    $loggedin=SET_checklogin("$emailid","$password");
+    if(!$loggedin)
+	{
+	$backdirection=$FILESDIR."/login.php";
+   	header("Location:$backdirection");
+	exit(1);
+	}
+    else if($loggedin)
+	{
+	SET_login("$emailid","$password",true);
+	$backdirection=$FILESDIR."/roomstatus.php";
+   	header("Location:$backdirection");
+	exit(1);
+	}
+  }
+?>

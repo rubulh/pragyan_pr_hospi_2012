@@ -1,0 +1,14 @@
+<?php
+require_once("ifloggedin.php");
+require_once("setup/SET_logout.php");
+$thecurrentuserid=$theextracteduseridis;
+  {
+     $varlogout=SET_logout($thecurrentuserid);
+     if($varlogout)
+	{
+	$backagain=$FILESDIR."/login.php";
+   	header("Location:$backagain");
+	exit(1);
+	}
+  }
+?>
